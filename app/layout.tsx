@@ -41,11 +41,13 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
     <html lang="en" className={inter.className}>
       <body className="text-text-light dark:text-text-dark bg-background-light dark:bg-background-dark">
-        <Script
-          defer
-          data-domain="neurodiversity.wiki"
-          src="/js/script.outbound-links.js"
-        ></Script>
+        {process.env.GITHUB_PAGES !== "true" && (
+          <Script
+            defer
+            data-domain="neurodiversity.wiki"
+            src="/js/script.outbound-links.js"
+          ></Script>
+        )}
         <PrefersReducedMotion />
         <TopBar />
         <div className="flex flex-col min-h-screen space-y-20 sm:space-y-24">
