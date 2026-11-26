@@ -47,7 +47,7 @@ function Icon({ isOpen: isOpen }: { isOpen: boolean }) {
       <animated.img
         aria-hidden
         alt=""
-        src="/icons/plus-outline-light.svg"
+        src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/icons/plus-outline-light.svg`}
         width="24px"
         height="24px"
         style={styles}
@@ -56,7 +56,7 @@ function Icon({ isOpen: isOpen }: { isOpen: boolean }) {
       <animated.img
         aria-hidden
         alt=""
-        src="/icons/plus-outline-dark.svg"
+        src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/icons/plus-outline-dark.svg`}
         width="24px"
         height="24px"
         style={styles}
