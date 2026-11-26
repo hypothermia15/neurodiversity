@@ -1,7 +1,23 @@
 /** @type {import('next').NextConfig} */
+/* global process */
 import { withContentlayer } from "next-contentlayer";
 
-const config = withContentlayer({
+// GITHUB_PAGES=true ise site statik HTML olarak dışa aktarılır (GitHub Pages için).
+const isGithubPages = process.env.GITHUB_PAGES === "true";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+const githubPagesConfig = {
+  pageExtensions: ["js", "jsx", "mdx", "tsx", "ts"],
+  output: "export",
+  basePath,
+  trailingSlash: true,
+  images: {
+    loader: "custom",
+    loaderFile: "./image-loader.js",
+  },
+};
+
+const vercelConfig = {
   pageExtensions: ["js", "jsx", "mdx", "tsx", "ts"],
   async redirects() {
     return [
@@ -49,6 +65,10 @@ const config = withContentlayer({
       },
     ];
   },
-});
+};
+
+const config = withContentlayer(
+  isGithubPages ? githubPagesConfig : vercelConfig,
+);
 
 export default config;

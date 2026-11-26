@@ -1,3 +1,6 @@
+// GitHub Pages alt yolu (ör. /neurodiversity) arka plan görsellerine eklenir.
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 module.exports = {
   mode: "jit",
   content: [
@@ -8,10 +11,10 @@ module.exports = {
   darkMode: "media",
   theme: {
     backgroundImage: {
-      join: "url('/backgrounds/join.svg')",
-      "join-mobile": "url('/backgrounds/join-mobile.svg')",
-      "top-bar": "url('/backgrounds/top-border.svg')",
-      discord: "url('/backgrounds/discord.svg')",
+      join: `url('${basePath}/backgrounds/join.svg')`,
+      "join-mobile": `url('${basePath}/backgrounds/join-mobile.svg')`,
+      "top-bar": `url('${basePath}/backgrounds/top-border.svg')`,
+      discord: `url('${basePath}/backgrounds/discord.svg')`,
     },
     extend: {
       colors: {
